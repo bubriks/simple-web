@@ -12,41 +12,24 @@ jobs:
 
     - uses: Azure/docker-login@v1
       with:
-        login-server: contoso.azurecr.io
+        login-server: bubri.azurecr.io
         username: ${{ secrets.REGISTRY_USERNAME }}
         password: ${{ secrets.REGISTRY_PASSWORD }}
     
     - run: |
-        docker build . -t contoso.azurecr.io/k8sdemo:${{ github.sha }}
-        docker push contoso.azurecr.io/k8sdemo:${{ github.sha }}
+        docker build . -t bubri.azurecr.io/k8sdemo:${{ github.sha }}
+        docker push bubri.azurecr.io/k8sdemo:${{ github.sha }}
     
-    
-    
-    - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
-
-      
-
-    - uses: Azure/docker-login@v1
-      with:
-        login-server: contoso.azurecr.io
-        username: ${{ secrets.REGISTRY_USERNAME }}
-        password: ${{ secrets.REGISTRY_PASSWORD }}
-    
-    - run: |
-        docker build . -t contoso.azurecr.io/k8sdemo:${{ github.sha }}
-        docker push contoso.azurecr.io/k8sdemo:${{ github.sha }}
-      
     # Set the target AKS cluster.
     - uses: Azure/aks-set-context@v1
       with:
         creds: '${{ secrets.AZURE_CREDENTIALS }}'
-        cluster-name: contoso
-        resource-group: contoso-rg
-        
+        cluster-name: bubri
+        resource-group: bubri-rg
+
     - uses: Azure/k8s-create-secret@v1
       with:
-        container-registry-url: contoso.azurecr.io
+        container-registry-url: bubri.azurecr.io
         container-registry-username: ${{ secrets.REGISTRY_USERNAME }}
         container-registry-password: ${{ secrets.REGISTRY_PASSWORD }}
         secret-name: demo-k8s-secret
@@ -54,8 +37,7 @@ jobs:
     - uses: Azure/k8s-deploy@v1.4
       with:
         manifests: |
-          manifests/deployment.yml
-          manifests/service.yml
+          deployment.yml
         images: |
           demo.azurecr.io/k8sdemo:${{ github.sha }}
         imagepullsecrets: |
