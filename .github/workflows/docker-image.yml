@@ -25,7 +25,7 @@ jobs:
       with:
         creds: '${{ secrets.AZURE_CREDENTIALS }}'
         cluster-name: bubri
-        resource-group: bubri-rg
+        resource-group: myResourceGroup
 
     - uses: Azure/k8s-create-secret@v1
       with:
