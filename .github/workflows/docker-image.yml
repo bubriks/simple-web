@@ -24,7 +24,7 @@ jobs:
     - uses: Azure/aks-set-context@v1
       with:
         creds: '${{ secrets.AZURE_CREDENTIALS }}'
-        cluster-name: bubri
+        cluster-name: myAKSCluster
         resource-group: myResourceGroup
 
     - uses: Azure/k8s-create-secret@v1
