@@ -6,11 +6,11 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      app: example_code
+      app: nginx
   template:
     metadata:
       labels:
-        app: example_code
+        app: nginx
         color: green
     spec:
       containers:
