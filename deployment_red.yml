@@ -4,6 +4,9 @@ metadata:
   name: deployment-red
 spec:
   replicas: 1
+  selector:
+    matchLabels:
+      app: example_code
   template:
     metadata:
       labels:
