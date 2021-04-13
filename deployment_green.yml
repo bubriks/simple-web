@@ -12,6 +12,6 @@ spec:
     spec:
       containers:
       - name: simple_web
-        image: bubri.azurecr.io/simple_web
+        image: bubri.azurecr.io/simple_web:new
         ports:
         - containerPort: 80
