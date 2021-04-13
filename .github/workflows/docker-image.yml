@@ -15,12 +15,12 @@ jobs:
         login-server: bubri.azurecr.io
         username: ${{ secrets.REGISTRY_USERNAME }}
         password: ${{ secrets.REGISTRY_PASSWORD }}
-    
+
     - run: |
         docker build . -t bubri.azurecr.io/simple_web:${{ github.sha }}
         docker push bubri.azurecr.io/simple_web:${{ github.sha }}
-    
-    # Set the target AKS cluster
+
+    # Set the target AKS cluster.
     - uses: Azure/aks-set-context@v1
       with:
         creds: '${{ secrets.AZURE_CREDENTIALS }}'
@@ -37,8 +37,10 @@ jobs:
     - uses: Azure/k8s-deploy@v1.4
       with:
         manifests: |
-          deployment.yml
-        images: |
-          demo.azurecr.io/simple_web:${{ github.sha }}
+          deployment_green.yml
+          deployment_red.yml
+          service.yml
         imagepullsecrets: |
           demo-k8s-secret
+        images: |
+          demo.azurecr.io/simple_web:${{ github.sha }}
