@@ -15,6 +15,6 @@ spec:
     spec:
       containers:
       - name: nginx
-        image: bubriks/simple_web
+        image: bubri.azurecr.io/simple_web
         ports:
         - containerPort: 80

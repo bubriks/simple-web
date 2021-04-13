@@ -17,8 +17,8 @@ jobs:
         password: ${{ secrets.REGISTRY_PASSWORD }}
 
     - run: |
-        docker build . -t bubri.azurecr.io/simple_web:${{ github.sha }}
-        docker push bubri.azurecr.io/simple_web:${{ github.sha }}
+        docker build . -t bubri.azurecr.io/simple_web
+        docker push bubri.azurecr.io/simple_web
 
     # Set the target AKS cluster.
     - uses: Azure/aks-set-context@v1
@@ -42,5 +42,3 @@ jobs:
           service.yml
         imagepullsecrets: |
           demo-k8s-secret
-        images: |
-          demo.azurecr.io/simple_web:${{ github.sha }}
