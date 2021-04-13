@@ -17,4 +17,4 @@ spec:
       - name: simple-web
         image: bubri.azurecr.io/simple_web
         ports:
-        - containerPort: 80
+        - containerPort: 3000
