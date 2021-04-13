@@ -14,7 +14,7 @@ spec:
         color: green
     spec:
       containers:
-      - name: simple_web
+      - name: simple-web
         image: bubri.azurecr.io/simple_web:new
         ports:
         - containerPort: 80
