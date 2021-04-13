@@ -3,18 +3,15 @@ kind: Deployment
 metadata:
   name: deployment-green
 spec:
-  selector:
-    matchLabels:
-      app: nginx
   replicas: 1
   template:
     metadata:
       labels:
-        app: nginx
+        app: example_code
         color: green
     spec:
       containers:
-      - name: nginx
+      - name: simple_web
         image: bubri.azurecr.io/simple_web
         ports:
         - containerPort: 80
