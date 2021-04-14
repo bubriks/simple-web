@@ -1,0 +1,49 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: Gateway
+metadata:
+  name: simple-web-gateway
+spec:
+  selector:
+    istio: ingressgateway # use istio default controller
+  servers:
+  - port:
+      number: 80
+      name: http
+      protocol: HTTP
+    hosts:
+    - "*"
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: DestinationRule
+metadata:
+  name: simple-web
+spec:
+  host: simple-web
+  subsets:
+  - name: blue
+    labels:
+      tag: '1.0.0'
+  - name: green
+    labels:
+      tag: '1.0.1'
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: simple-web
+spec:
+  hosts:
+  - "*"
+  gateways:
+  - simple-web-gateway
+  http:
+  - match:
+    route:
+    - destination:
+        host: simple-web
+        subset: blue
+      weight: 50
+    - destination:
+        host: simple-web
+        subset: green
+      weight: 50
