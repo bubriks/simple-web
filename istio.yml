@@ -37,8 +37,7 @@ spec:
   gateways:
   - simple-web-gateway
   http:
-  - match:
-    route:
+  - route:
     - destination:
         host: simple-web
         subset: blue
