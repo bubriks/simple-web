@@ -28,7 +28,7 @@ metadata:
     chart: grafana-0.1.0
     heritage: Tiller
     release: RELEASE-NAME
-  name: grafana
+  name: katacoda-grafana
   namespace: istio-system
 spec:
   ports:
@@ -40,6 +40,8 @@ spec:
     app: grafana
   sessionAffinity: None
   type: ClusterIP
+  externalIPs:
+    - localhost
 ---
 apiVersion: v1
 kind: Service
@@ -136,3 +138,5 @@ spec:
     app: istio-ingressgateway
     istio: ingressgateway
   type: LoadBalancer
+  externalIPs:
+  - localhost
