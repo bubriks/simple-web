@@ -138,5 +138,3 @@ spec:
     app: istio-ingressgateway
     istio: ingressgateway
   type: LoadBalancer
-  externalIPs:
-  - 172.17.0.54
