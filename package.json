@@ -1,0 +1,19 @@
+{
+  "name": "simple-web",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo Example Test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bubriks/simple-web.git"
+  },
+  "author": "bubriks",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bubriks/simple-web/issues"
+  },
+  "homepage": "https://github.com/bubriks/simple-web#readme"
+}
