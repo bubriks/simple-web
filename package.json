@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo Example Test"
+    "test": "mocha"
   },
   "repository": {
     "type": "git",
@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/bubriks/simple-web/issues"
   },
-  "homepage": "https://github.com/bubriks/simple-web#readme"
+  "homepage": "https://github.com/bubriks/simple-web#readme",
+  "dependencies": {
+    "mocha": "^8.3.2"
+  }
 }
