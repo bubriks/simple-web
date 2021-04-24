@@ -44,7 +44,7 @@ metadata:
     app: simple-web
 spec:
   ports:
-  - port: 80
+  - port: 31380
     name: http
   selector:
     app: nginx
